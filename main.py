@@ -1,8 +1,8 @@
 # This is a sample Python script.
 
 # Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classres, files
-# , tool windows, actions, and settings.
+# Press Double Shift to searcfh everywhere for classres, files
+# , tool windows, acfvfdvftions, and settings.
 
 
 def print_hi(name):
