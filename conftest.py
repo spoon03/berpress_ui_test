@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.options import Options
 
 # from fixtures.models.login import LoginData
 from fixtures.pages.application import Application
+from fixtures.constans import Url
 
 logger = logging.getLogger("moodle")
 
@@ -18,7 +19,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--url",
         action="store",
-        default="https://berpress.github.io/online-grocery-store/",
+        default=Url.BASE_URL,
         help="berpress url",
     ),
     parser.addoption(
