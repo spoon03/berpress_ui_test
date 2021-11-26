@@ -10,7 +10,9 @@ class TestLending:
         :return:
         """
         app.open_lending_page()
-        assert 1 == 1
+        app.lending.serch("Яблоко")
+        text = app.lending.get_result_serch_text()
+        assert text == "ничего не найдено"
 
     def test_search_negative(self, app):
         """
