@@ -2,7 +2,7 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to searcfh everywhere for classres, files
-# , tool windows, acfvfdvftions, and settings.
+# , tool windows, acfvfdvftions, afvfnd settings.
 
 
 def print_hi(name):
