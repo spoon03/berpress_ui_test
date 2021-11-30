@@ -1,7 +1,6 @@
-import time
-
 import pytest
 from fixtures.constans import LandingConst
+from fixtures.locators.landing import LandingLocators
 
 
 class TestLending:
@@ -18,7 +17,6 @@ class TestLending:
         """
         app.open_lending_page()
         app.landing.search(product)
-        time.sleep(3)
         result_search = app.landing.get_result_search()
         assert product in result_search
 
@@ -35,8 +33,8 @@ class TestLending:
         """
         app.open_lending_page()
         app.landing.search(product)
-        result_search = app.landing.get_result_search()
-        assert product in result_search
+        result = app.landing.get_text(LandingLocators.NO_RESULT_SEARCH)[0]
+        assert result == LandingConst.NO_RESULT_TEXT
 
     def test_add_to_cart(self, app):
         """

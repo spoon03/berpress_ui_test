@@ -1,4 +1,6 @@
 import logging
+import time
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -32,6 +34,7 @@ class BasePage:
         elements = self.custom_find_elements(locator, wait_time)
         element = elements[0]
         logger.info(f"Нажатие на кол-во  {len(elements)}")
+        time.sleep(1)
         element.click()
 
     def fill_element(self, data, locator, wait_time=10) -> None:

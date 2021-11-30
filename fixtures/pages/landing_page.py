@@ -1,4 +1,5 @@
 import logging
+
 from fixtures.pages.base_page import BasePage
 from fixtures.locators.landing import LandingLocators
 
