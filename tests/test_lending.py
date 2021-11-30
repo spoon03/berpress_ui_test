@@ -1,5 +1,12 @@
+import time
+
+import pytest
+from fixtures.constans import LandingConst
+
+
 class TestLending:
-    def test_search_positive(self, app):
+    @pytest.mark.parametrize("product", LandingConst.TEST_EXIST_GOODS)
+    def test_search_positive(self, app, product):
         """
         Шаги:
         1.Открыть страницу витрины
@@ -10,11 +17,13 @@ class TestLending:
         :return:
         """
         app.open_lending_page()
-        app.lending.serch("Яблоко")
-        text = app.lending.get_result_serch_text()
-        assert text == "ничего не найдено"
+        app.landing.search(product)
+        time.sleep(3)
+        result_search = app.landing.get_result_search()
+        assert product in result_search
 
-    def test_search_negative(self, app):
+    @pytest.mark.parametrize("product", LandingConst.TEST_NON_EXIST_GOODS)
+    def test_search_negative(self, app, product):
         """
         Шаги:
         1.Открыть страницу витрины
@@ -25,7 +34,9 @@ class TestLending:
         :return:
         """
         app.open_lending_page()
-        assert 1 == 1
+        app.landing.search(product)
+        result_search = app.landing.get_result_search()
+        assert product in result_search
 
     def test_add_to_cart(self, app):
         """

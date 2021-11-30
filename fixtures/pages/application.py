@@ -1,13 +1,16 @@
 from fixtures.constans import Url
+from fixtures.pages.landing_page import LandingPage
 import logging
 
-logger = logging.getLogger("moodle")
+logger = logging.getLogger("press")
 
 
 class Application:
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
+        self.landing = LandingPage(self)
+        # self.register = RegisterPage(self)
 
     def quit(self):
         self.driver.quit()
