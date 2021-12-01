@@ -20,7 +20,7 @@ class BasePage:
         """
         elements = WebDriverWait(self.app.driver, wait_time).until(
             EC.presence_of_all_elements_located(locator),
-            message=f"Can't find element by locator {locator}",
+            message=f"Не найден элемент с локатором {locator}",
         )
         return elements
 
@@ -33,7 +33,7 @@ class BasePage:
         """
         elements = self.custom_find_elements(locator, wait_time)
         element = elements[0]
-        logger.info(f"Нажатие на кол-во  {len(elements)}")
+        logger.info(f"Нажатие на элемент с локатором {locator}")
         time.sleep(1)
         element.click()
 
