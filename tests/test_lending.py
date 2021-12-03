@@ -36,14 +36,22 @@ class TestLending:
         result = app.landing.get_text(LandingLocators.NO_RESULT_SEARCH)[0]
         assert result == LandingConst.NO_RESULT_TEXT
 
-    def test_add_to_cart(self, app):
+    @pytest.mark.parametrize("product", LandingConst.TEST_EXIST_GOODS)
+    def test_add_to_cart(self, app, product):
         """
         Шаги:
         1.Открыть страницу поиска
         2.Добавить товар в корзину
-        3.Убедиться что товар добавлен
+        3.Открыть корзину
+        4.Убедиться что товар добавлен
         :param app:
         :return:
         """
         app.open_lending_page()
-        assert 1 == 1
+        app.landing.buy(product)
+        app.landing.open_cart()
+        cart_text = app.landing.get_text(locator=LandingLocators.CART_TITLE)
+        cart_title = cart_text[0]
+        assert cart_title == "Корзина"
+        add_goods = cart_text[1]
+        assert add_goods.find(product) != -1

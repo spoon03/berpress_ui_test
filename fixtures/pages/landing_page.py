@@ -15,13 +15,30 @@ class LandingPage(BasePage):
         :param text: Текст для поиска
         :param is_submit: Нажать кнопку поиска
         """
-        logger.info(f"Search product {text} in the store")
+        logger.info(f"Поиск продукта {text} в магазине")
         self.fill_element(data=text, locator=LandingLocators.SEARCH_INPUT)
         if is_submit:
             self.click_element(locator=LandingLocators.SEARCH_BUTTON)
 
     def get_result_search(self) -> str:
         """Возвращает результат поиска"""
-        logger.info("Search result")
-        text = self.get_text(locator=LandingLocators.SEARCH_RESULT)
+        logger.info("Отображение результатов поиска")
+        text = self.get_text(locator=LandingLocators.RESULT_SEARCH)
         return text
+
+    def buy(self, goods: str = "bananas") -> None:
+        """
+        Добавление товара в корзину.
+        :param goods: покупаемый товар
+        :return:
+        """
+        logger.info(f"Добавление товара {goods} в корзину")
+        self.click_element(locator=LandingLocators.BUY_BUTTON(goods=goods))
+
+    def open_cart(self) -> None:
+        """
+        Открыть корзину.
+        :return:
+        """
+        logger.info("Переход в корзину")
+        self.click_element(locator=LandingLocators.CART_BUTTON)
