@@ -4,6 +4,6 @@ class Url:
 
 
 class LandingConst:
-    TEST_EXIST_GOODS = ["pepsi", "apples", "potatoes"]
-    TEST_NON_EXIST_GOODS = ["balalaika", "vodka", "medvev"]
+    TEST_EXIST_GOODS = ["apples", "potatoes"]
+    TEST_NON_EXIST_GOODS = ["balalaika", "vodka"]
     NO_RESULT_TEXT = "Nothing here, see github"

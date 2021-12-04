@@ -1,6 +1,7 @@
 import pytest
 from fixtures.constans import LandingConst
 from fixtures.locators.landing import LandingLocators
+from fixtures.locators.landing import CartLocators
 
 
 class TestLending:
@@ -49,8 +50,8 @@ class TestLending:
         """
         app.open_lending_page()
         app.landing.buy(product)
-        app.landing.open_cart()
-        cart_text = app.landing.get_text(locator=LandingLocators.CART_TITLE)
+        app.cart.open_cart()
+        cart_text = app.landing.get_text(locator=CartLocators.CART_TITLE)
         cart_title = cart_text[0]
         assert cart_title == "Корзина"
         add_goods = cart_text[1]

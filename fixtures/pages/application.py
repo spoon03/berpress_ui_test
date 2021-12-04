@@ -1,5 +1,6 @@
 from fixtures.constans import Url
 from fixtures.pages.landing_page import LandingPage
+from fixtures.pages.cart_page import CartPage
 import logging
 
 logger = logging.getLogger("press")
@@ -10,7 +11,7 @@ class Application:
         self.driver = driver
         self.url = url
         self.landing = LandingPage(self)
-        # self.register = RegisterPage(self)
+        self.cart = CartPage(self)
 
     def quit(self):
         self.driver.quit()

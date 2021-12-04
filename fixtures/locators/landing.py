@@ -18,5 +18,21 @@ class LandingLocators:
         )
         return selector
 
+
+class CartLocators:
+    """Селекторы для корзины"""
+
     CART_BUTTON = (By.CSS_SELECTOR, "i.material-icons")
     CART_TITLE = (By.CSS_SELECTOR, "li.collection-item")
+    CART_ADD_ITEM = (
+        By.XPATH,
+        ".//i[@class = 'material-icons basket-quantity' and contains(text(),'add')]",
+    )
+    CART_REMOVE_ITEM = (
+        By.XPATH,
+        ".//i[@class = 'material-icons basket-quantity' and contains(text(),'remove')]",
+    )
+    CART_DELETE_ITEM = (
+        By.XPATH,
+        ".//i[@class = 'material-icons basket-delete' and contains(text(),'delete')]",
+    )

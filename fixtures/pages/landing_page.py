@@ -34,11 +34,3 @@ class LandingPage(BasePage):
         """
         logger.info(f"Добавление товара {goods} в корзину")
         self.click_element(locator=LandingLocators.BUY_BUTTON(goods=goods))
-
-    def open_cart(self) -> None:
-        """
-        Открыть корзину.
-        :return:
-        """
-        logger.info("Переход в корзину")
-        self.click_element(locator=LandingLocators.CART_BUTTON)
