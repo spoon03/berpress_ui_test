@@ -18,9 +18,9 @@ class TestCart:
         product = random.choice(LandingConst.TEST_EXIST_GOODS)
         app.landing.buy(product)
         app.cart.open_cart()
-        product_total_price = app.cart.product_total_price(product)
+        product_total_price = app.cart.get_product_total_price(product)
         app.cart.add_item()
-        product_total_price_add = app.cart.product_total_price(product)
+        product_total_price_add = app.cart.get_product_total_price(product)
         assert product_total_price == product_total_price_add - product_total_price
 
     def test_remove_item(self, app):
@@ -38,9 +38,9 @@ class TestCart:
         product = random.choice(LandingConst.TEST_EXIST_GOODS)
         app.landing.buy(product)
         app.cart.open_cart()
-        product_total_price = app.cart.product_total_price(product)
+        product_total_price = app.cart.get_product_total_price(product)
         app.cart.remove_item()
-        product_total_price_add = app.cart.product_total_price(product)
+        product_total_price_add = app.cart.get_product_total_price(product)
         assert product_total_price == product_total_price_add + product_total_price
 
     def test_del(self, app):
@@ -56,6 +56,10 @@ class TestCart:
         :return:
         """
         app.open_lending_page()
+        product = random.choice(LandingConst.TEST_EXIST_GOODS)
+        app.landing.buy(product)
+        app.cart.open_cart()
+        app.cart.delete()
         assert 1 == 1
 
     def test_buy(self, app):
@@ -71,4 +75,8 @@ class TestCart:
         :return:
         """
         app.open_lending_page()
+        product = random.choice(LandingConst.TEST_EXIST_GOODS)
+        app.landing.buy(product)
+        app.cart.open_cart()
+        app.cart.buy()
         assert 1 == 1

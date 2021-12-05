@@ -33,10 +33,9 @@ class CartPage(BasePage):
         logger.info("Уменьшаем количество товара на 1ед.")
         self.click_element(locator=CartLocators.CART_REMOVE_ITEM)
 
-    def product_total_price(self, product: str) -> float:
+    def get_product_total_price(self, product: str) -> float:
         """
         Ищем итоговую стоимость для заданного продукта
-        :param cart_text: Массив с текстами из корзины
         :param product: Имя продукта
         :return: Значение стоимости
         """
@@ -49,3 +48,19 @@ class CartPage(BasePage):
             (product_price_string.find("= ") + 2) : product_price_string.find(" руб")
         ]
         return float(product_total_price)
+
+    def delete(self) -> None:
+        """
+        Удалить товар.
+        :return:
+        """
+        logger.info("Удаление товара")
+        self.click_element(locator=CartLocators.CART_DELETE_ITEM)
+
+    def buy(self) -> None:
+        """
+        Покупка всех товаров из корзины.
+        :return:
+        """
+        logger.info("Покупка товаров")
+        self.click_element(locator=CartLocators.CART_BUY_BUTTON)
