@@ -15,12 +15,13 @@ class TestCart:
         :return:
         """
         app.open_lending_page()
-        app.landing.buy(random.choice(LandingConst.TEST_EXIST_GOODS))
+        product = random.choice(LandingConst.TEST_EXIST_GOODS)
+        app.landing.buy(product)
         app.cart.open_cart()
-        # cart_text = app.landing.get_text(locator=CartLocators.CART_TITLE)
+        product_total_price = app.cart.product_total_price(product)
         app.cart.add_item()
-        # cart_text2 = app.landing.get_text(locator=CartLocators.CART_TITLE)
-        assert 1 == 1
+        product_total_price_add = app.cart.product_total_price(product)
+        assert product_total_price == product_total_price_add - product_total_price
 
     def test_remove_item(self, app):
         """
@@ -34,10 +35,13 @@ class TestCart:
         :return:
         """
         app.open_lending_page()
-        app.landing.buy(random.choice(LandingConst.TEST_EXIST_GOODS))
+        product = random.choice(LandingConst.TEST_EXIST_GOODS)
+        app.landing.buy(product)
         app.cart.open_cart()
+        product_total_price = app.cart.product_total_price(product)
         app.cart.remove_item()
-        assert 1 == 1
+        product_total_price_add = app.cart.product_total_price(product)
+        assert product_total_price == product_total_price_add + product_total_price
 
     def test_del(self, app):
         """
