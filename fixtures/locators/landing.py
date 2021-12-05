@@ -34,7 +34,7 @@ class CartLocators:
     )
     CART_DELETE_ITEM = (
         By.XPATH,
-        ".//i[@class = 'material-icons basket-delete' and contains(text(),'delete')]",
+        ".//i[@class = 'material-icons basket-delete' and contains(text(),'close')]",
     )
     CART_BUY_BUTTON = (
         By.XPATH,

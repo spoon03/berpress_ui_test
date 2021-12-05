@@ -1,5 +1,6 @@
 import random
-from fixtures.constans import LandingConst
+from fixtures.constans import LandingConst, CartConst
+from fixtures.locators.landing import CartLocators
 
 
 class TestCart:
@@ -60,7 +61,8 @@ class TestCart:
         app.landing.buy(product)
         app.cart.open_cart()
         app.cart.delete()
-        assert 1 == 1
+        cart_text = app.cart.get_text(locator=CartLocators.CART_TITLE)
+        assert cart_text[1] == CartConst.CART_IS_EMPTY
 
     def test_buy(self, app):
         """
