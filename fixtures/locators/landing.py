@@ -38,5 +38,9 @@ class CartLocators:
     )
     CART_BUY_BUTTON = (
         By.XPATH,
-        ".//i[@class = 'material-icons basket-delete' and contains(text(),'delete')]",
+        ".//li/button[@class = 'btn red btn-small' and contains(text(),'Buy')]",
+    )
+    CART_DONE_POPUP = (
+        By.XPATH,
+        ".//div[@class = 'toast' and contains(text(),'Pay done!')]",
     )

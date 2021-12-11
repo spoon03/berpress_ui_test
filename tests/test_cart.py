@@ -81,4 +81,7 @@ class TestCart:
         app.landing.buy(product)
         app.cart.open_cart()
         app.cart.buy()
-        assert 1 == 1
+        assert (
+            app.cart.get_text(locator=CartLocators.CART_DONE_POPUP)[0]
+            == CartConst.CART_BUY
+        )

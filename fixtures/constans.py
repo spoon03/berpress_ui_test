@@ -11,3 +11,4 @@ class LandingConst:
 
 class CartConst:
     CART_IS_EMPTY = "Cart is Empty"
+    CART_BUY = "Pay done!"
