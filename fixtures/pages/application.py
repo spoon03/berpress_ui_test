@@ -18,5 +18,5 @@ class Application:
         logger.info("Close browser")
 
     def open_lending_page(self):
-        logger.info(f"Open page {self.url+Url.LENDING_URL}")
+        logger.info(f"Открытие страницы {self.url+Url.LENDING_URL}")
         self.driver.get(self.url + Url.LENDING_URL)
