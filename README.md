@@ -1,3 +1,5 @@
+![example workflow](https://github.com/spoon03/berpress_ui_test/actions/workflows/github-actions-demo.yml/badge.svg)
+
 # berpress_ui_test
 Selenium/Python
 
