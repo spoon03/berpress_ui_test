@@ -25,7 +25,7 @@ class BasePage:
         )
         return elements
 
-    def click_element(self, locator, wait_time=15) -> None:
+    def click_element(self, locator, wait_time=10) -> None:
         """
         Клик по элементу.
         :param locator: Локатор элемента
