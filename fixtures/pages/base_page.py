@@ -1,6 +1,7 @@
 import logging
 import time
 
+from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -34,8 +35,15 @@ class BasePage:
         elements = self.custom_find_elements(locator, wait_time)
         element = elements[0]
         logger.info(f"Нажатие на элемент с локатором {locator}")
-        time.sleep(2)
-        element.click()
+        timestamp = time.time() + wait_time
+        while time.time() < timestamp:
+            try:
+                element.click()
+                break
+            except ElementClickInterceptedException:
+                time.sleep(0.5)
+        # time.sleep(2)
+        # element.click()
 
     def fill_element(self, data, locator, wait_time=10) -> None:
         """
@@ -58,6 +66,7 @@ class BasePage:
         """
         result_text = []
         elements = self.custom_find_elements(locator, wait_time)
+        time.sleep(0.5)
         for element in elements:
             logger.info(f"Для  {element} получен текст {element.text}")
             result_text.append(element.text)

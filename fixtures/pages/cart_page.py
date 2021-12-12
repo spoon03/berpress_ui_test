@@ -40,10 +40,13 @@ class CartPage(BasePage):
         :return: Значение стоимости
         """
         cart_text = self.get_text(locator=CartLocators.CART_TITLE)
+        product_price_string = ""
         for line in cart_text:
             if line.find(product) != -1:
                 product_price_string = line
                 break
+        if product_price_string == "":
+            assert False, f"В корзине не найден продукт {product}"
         product_total_price = product_price_string[
             (product_price_string.find("= ") + 2) : product_price_string.find(" руб")
         ]
